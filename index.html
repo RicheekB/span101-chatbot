@@ -25,6 +25,7 @@
 
     h1 {
       font-size: 22px;
+      margin-bottom: 12px;
     }
 
     .messages {
@@ -77,8 +78,13 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    button:hover {
+      background: #2563eb;
+    }
   </style>
 </head>
+
 <body>
   <div class="chatbox">
     <h1>SPAN 101 Chatbox</h1>
@@ -99,35 +105,122 @@
     function responses(message) {
       const msg = message.toLowerCase();
 
-      if (msg.includes("contact") || msg.includes("email")) {
+      if (
+        msg.includes("contact") ||
+        msg.includes("email") ||
+        msg.includes("professor") ||
+        msg.includes("instructor") ||
+        msg.includes("canvas") ||
+        msg.includes("reach") ||
+        msg.includes("message")
+      ) {
         return "You can contact Professor Ayari Valenzuela Macias by email at avalenzuela@csusm.edu or through Canvas. Expect a response the same day during weekdays, and a bit longer on weekends.";
       }
 
-      if (msg.includes("office hours")) {
+      if (
+        msg.includes("office hours") ||
+        msg.includes("office hour") ||
+        msg.includes("zoom") ||
+        msg.includes("appointment") ||
+        msg.includes("meet") ||
+        msg.includes("meeting") ||
+        msg.includes("available") ||
+        msg.includes("availability")
+      ) {
         return "Office hours are online via Zoom (https://csusm.zoom.us/my/csusm) and by appointment. Tuesdays/Thursdays are busy, but mornings/evenings work. Mondays, Wednesdays, and Fridays are more open. Also, you earn 3% just for meeting with the professor!";
       }
 
-      if (msg.includes("first") || msg.includes("start")) {
+      if (
+        msg.includes("start") ||
+        msg.includes("begin") ||
+        msg.includes("first") ||
+        msg.includes("intro") ||
+        msg.includes("introductory") ||
+        msg.includes("video") ||
+        msg.includes("quiz") ||
+        msg.includes("syllabus quiz")
+      ) {
         return "To get started: watch the introductory video, read the syllabus, and complete the syllabus quiz.";
       }
 
-      if (msg.includes("grade") || msg.includes("grading")) {
+      if (
+        msg.includes("grade") ||
+        msg.includes("grading") ||
+        msg.includes("points") ||
+        msg.includes("percentage") ||
+        msg.includes("percent") ||
+        msg.includes("worth") ||
+        msg.includes("score") ||
+        msg.includes("requirements")
+      ) {
         return "See 'Course Requirements': Group work (20%), Homework (25%), Oral Presentation (12%), Skits (20%), Composition (10%), Final Exam (10%), Meet the Professor (3%).";
       }
 
-      if (msg.includes("group work")) {
-        return "Group work is 20% of your grade. You must meet 6 times (30 minutes each) in small groups and record your sessions. See 'Group Work' section.";
+      if (
+        msg.includes("group work") ||
+        msg.includes("group") ||
+        msg.includes("groups") ||
+        msg.includes("record") ||
+        msg.includes("recording") ||
+        msg.includes("session") ||
+        msg.includes("sessions") ||
+        msg.includes("30 minutes")
+      ) {
+        return "Group work is 20% of your grade. You must meet 6 times for 30 minutes each in small groups and record your sessions.";
       }
 
-      if (msg.includes("homework")) {
-        return "Homework is 25% of your grade. Complete MindTap assignments weekly by Sunday at midnight. See 'Homework' section.";
+      if (
+        msg.includes("homework") ||
+        msg.includes("assignment") ||
+        msg.includes("assignments") ||
+        msg.includes("mindtap") ||
+        msg.includes("weekly") ||
+        msg.includes("sunday") ||
+        msg.includes("midnight") ||
+        msg.includes("due") ||
+        msg.includes("deadline")
+      ) {
+        return "Homework is 25% of your grade. Complete MindTap assignments weekly by Sunday at midnight.";
       }
 
-      if (msg.includes("final")) {
+      if (
+        msg.includes("final") ||
+        msg.includes("exam") ||
+        msg.includes("test") ||
+        msg.includes("may 7") ||
+        msg.includes("may 10") ||
+        msg.includes("comprehensive") ||
+        msg.includes("online exam")
+      ) {
         return "The final exam is worth 10% and must be taken between May 7–10. It is comprehensive and online.";
       }
 
-      return "I’m here to help with the syllabus! Try asking about grading, assignments, office hours, or how to get started.";
+      if (
+        msg.includes("oral") ||
+        msg.includes("presentation") ||
+        msg.includes("speaking")
+      ) {
+        return "The oral presentation is worth 12% of your grade.";
+      }
+
+      if (
+        msg.includes("skit") ||
+        msg.includes("skits") ||
+        msg.includes("acting")
+      ) {
+        return "Skits are worth 20% of your grade.";
+      }
+
+      if (
+        msg.includes("composition") ||
+        msg.includes("essay") ||
+        msg.includes("writing") ||
+        msg.includes("paper")
+      ) {
+        return "The composition is worth 10% of your grade.";
+      }
+
+      return "I’m here to help with the syllabus! Try asking about grading, homework, group work, office hours, the final exam, presentations, skits, or composition.";
     }
 
     function sendMessage() {
