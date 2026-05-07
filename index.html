@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPAN 101 Chatbox</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .chatbox {
+      width: 100%;
+      max-width: 450px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 22px;
+    }
+
+    .messages {
+      height: 320px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .message {
+      padding: 10px;
+      border-radius: 14px;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+
+    .bot {
+      background: #e5e7eb;
+      align-self: flex-start;
+    }
+
+    .user {
+      background: #3b82f6;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .inputRow {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 14px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <h1>SPAN 101 Chatbox</h1>
+
+    <div id="messages" class="messages">
+      <div class="message bot">
+        Hi! I'm your SPAN 101 syllabus helper for Professor Ayari Valenzuela Macias. Ask me anything about the course!
+      </div>
+    </div>
+
+    <div class="inputRow">
+      <input id="userInput" placeholder="Ask about the syllabus..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function responses(message) {
+      const msg = message.toLowerCase();
+
+      if (msg.includes("contact") || msg.includes("email")) {
+        return "You can contact Professor Ayari Valenzuela Macias by email at avalenzuela@csusm.edu or through Canvas. Expect a response the same day during weekdays, and a bit longer on weekends.";
+      }
+
+      if (msg.includes("office hours")) {
+        return "Office hours are online via Zoom (https://csusm.zoom.us/my/csusm) and by appointment. Tuesdays/Thursdays are busy, but mornings/evenings work. Mondays, Wednesdays, and Fridays are more open. Also, you earn 3% just for meeting with the professor!";
+      }
+
+      if (msg.includes("first") || msg.includes("start")) {
+        return "To get started: watch the introductory video, read the syllabus, and complete the syllabus quiz.";
+      }
+
+      if (msg.includes("grade") || msg.includes("grading")) {
+        return "See 'Course Requirements': Group work (20%), Homework (25%), Oral Presentation (12%), Skits (20%), Composition (10%), Final Exam (10%), Meet the Professor (3%).";
+      }
+
+      if (msg.includes("group work")) {
+        return "Group work is 20% of your grade. You must meet 6 times (30 minutes each) in small groups and record your sessions. See 'Group Work' section.";
+      }
+
+      if (msg.includes("homework")) {
+        return "Homework is 25% of your grade. Complete MindTap assignments weekly by Sunday at midnight. See 'Homework' section.";
+      }
+
+      if (msg.includes("final")) {
+        return "The final exam is worth 10% and must be taken between May 7–10. It is comprehensive and online.";
+      }
+
+      return "I’m here to help with the syllabus! Try asking about grading, assignments, office hours, or how to get started.";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const messages = document.getElementById("messages");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.textContent = text;
+      messages.appendChild(userMsg);
+
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = responses(text);
+      messages.appendChild(botMsg);
+
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    document.getElementById("userInput").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
